@@ -10,9 +10,11 @@ class VehicleTest extends StandardTest{
         //save return value of drive into a new value 'car2'
         val car2 = car1.drive(10)
         //toString has not been defined
+        //see string interpolation
         println(s"My car is ${car2}")
         //use shouldBe
         //what happens if we don't extend StandardTest?
+        //what happens if we don't have 'val' in the Vehicle constructor?
         car2.position shouldBe 15
 
       }
@@ -23,6 +25,7 @@ class VehicleTest extends StandardTest{
          //note how you can copy just the fields you want
          val newFord = originalFord.copy( model="Mustang")
          println(s"Converted an old ${originalFord} to a new ${newFord}")
+         //see test fail if the value is changed
          newFord.position shouldBe 1
          newFord.make shouldBe "Ford"
          newFord.model shouldBe "Mustang"

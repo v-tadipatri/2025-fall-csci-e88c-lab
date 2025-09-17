@@ -25,6 +25,8 @@ case class CarCase(position: Int, make: String, model: String)
 
 
 /*
+//need to put this 'override val' - not well suited for class hierarchies
+
 case class CarCase(override val position: Int, make: String, model: String) extends Vehicle(position) {
 
   override def drive(distance: Int): Vehicle = {
