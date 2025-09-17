@@ -1,5 +1,9 @@
 package org.cscie88c.core.week2.demo
 
+/*
+  With a simple case class definition, we get other methods
+    like copy, toString, equals
+ */
 case class CarCase(position: Int, make: String, model: String)
 
 
@@ -8,6 +12,8 @@ case class CarCase(position: Int, make: String, model: String)
 
 
 
+
+//keep scrolling...
 
 
 
