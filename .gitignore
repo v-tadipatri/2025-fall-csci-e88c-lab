@@ -1,5 +1,6 @@
 *.class
 *.log
+mainrepo
 
 # sbt specific
 .cache
