@@ -1,4 +1,4 @@
-package org.cscie88c.week3lab
+package org.cscie88c.core.week3lab
 
 
 case class PizzaType(topping: String, size: String) {

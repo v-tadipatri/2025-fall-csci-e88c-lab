@@ -1,11 +1,11 @@
-package org.cscie88c.week3lab
+package org.cscie88c.core.week3lab
 
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalacheck._
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import org.scalatest.matchers.should.Matchers
-import org.cscie88c.week3lab.Toppings._
-import org.cscie88c.week3lab.Sizes._
+import org.cscie88c.core.week3lab.Toppings._
+import org.cscie88c.core.week3lab.Sizes._
 
 /**
   * This is an example of the "Function suite" style of writing tests
@@ -22,7 +22,7 @@ class PizzaToppingFunSuite extends AnyFunSuite with ScalaCheckPropertyChecks wit
         val randomOrders = Gen.choose(1,5)
         val pizzaSizeGen = Gen.oneOf(S,M,L,XL)
         
-        val toppingsGen = Gen.oneOf(OLIVES, PEPPERS, /*ANCHOVIES,*/ CHEESE)
+        val toppingsGen = Gen.oneOf(OLIVES, PEPPERS, /*ANCHOVIES, */ CHEESE)
 
         //now we build lists of the sizes and toppings
         val randomSizes = Gen.listOf(pizzaSizeGen)
@@ -43,7 +43,7 @@ class PizzaToppingFunSuite extends AnyFunSuite with ScalaCheckPropertyChecks wit
           (tuple) => {
             val delivery = scalaPizzeria.deliverPizzaWithForConstruct(tuple._1, tuple._2, tuple._3)
             //note the functional assertion style
-            assert(delivery.map(_._2.topping).toArray.contains (ANCHOVIES)==false)
+            assert(delivery.map(_._2.topping).toArray.contains (ANCHOVIES)==false, "We don't want fish on our pizza!")
             //delivery.map(_._2.topping).toArray.contains (ANCHOVIES)==false
           }
         }        

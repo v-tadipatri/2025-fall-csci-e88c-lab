@@ -1,9 +1,9 @@
-package org.cscie88c.week3lab
+package org.cscie88c.core.week3lab
 
 //need these import statements
-import org.cscie88c.week3lab.Toppings._
-import org.cscie88c.week3lab.Sizes._
-import org.cscie88c.week3lab._
+import org.cscie88c.core.week3lab.Toppings._
+import org.cscie88c.core.week3lab.Sizes._
+import org.cscie88c.core.week3lab._
 
 /**
  * This Pizzeria delivers in 2 different ways
@@ -18,6 +18,7 @@ class ScalaPizzeria {
     }
 
     def makeCheesePizzaBases(sizes: Seq[String]) = {
+        //for each of the sizes of pizza , make a cheese pizza of that size
         sizes.map(s => PizzaType(CHEESE, s ))
     }
 
@@ -28,10 +29,11 @@ class ScalaPizzeria {
         val pizza_base = makeCheesePizzaBases(sizes)
 
         //call flatmap except for innermost, which is a map
+        //this is complicated syntax to figure out...
         val deliveries = orders.flatMap(o => {
             pizza_base.flatMap(p => {
                 toppings.map( t=> {
-                    (o,p.copy(t))
+                    (o,p.copy(topping = t))
                 })
             })
         })

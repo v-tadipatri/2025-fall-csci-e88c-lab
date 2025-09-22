@@ -1,8 +1,8 @@
-package org.cscie88c.week3lab
+package org.cscie88c.core.week3lab
 
-import org.cscie88c.testutils.{StandardTest}
-import org.cscie88c.week3lab.Toppings._
-import org.cscie88c.week3lab.Sizes._
+import org.cscie88c.core.testutils.{StandardTest}
+import org.cscie88c.core.week3lab.Toppings._
+import org.cscie88c.core.week3lab.Sizes._
 
 /**
  * We have 2 pizzerias in town.
