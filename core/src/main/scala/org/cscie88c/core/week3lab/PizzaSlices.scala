@@ -1,7 +1,7 @@
 package org.cscie88c.core.week3lab
 
 
-case class PizzaType(topping: String, size: String) {
+case class PizzaType(size: String, topping: String) {
   
 }
 

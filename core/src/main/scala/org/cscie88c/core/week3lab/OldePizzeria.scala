@@ -17,7 +17,7 @@ class OldePizzeria {
     }
 
     def makeCheesePizzaBases(sizes: Seq[String]) = {
-        sizes.map(s => PizzaType(CHEESE, s ))
+        sizes.map(s => PizzaType( s, CHEESE ))
     }
 
     def deliverOldFashionedPizza(numOrders: Int, sizes: List[String], toppings: List[String]): List[(Int,PizzaType)] = {

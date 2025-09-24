@@ -18,7 +18,7 @@ class PizzaToppingFunSuite extends AnyFunSuite with ScalaCheckPropertyChecks wit
     val scalaPizzeria = new ScalaPizzeria()
 
    test("Scala Pizzeria's pizzas should not have fishy toppings") {
-        //Scalacheck Gen can pick one of a certainvalues
+        //Scalacheck Gen can pick one of a certain values
         val randomOrders = Gen.choose(1,5)
         val pizzaSizeGen = Gen.oneOf(S,M,L,XL)
         
@@ -43,8 +43,8 @@ class PizzaToppingFunSuite extends AnyFunSuite with ScalaCheckPropertyChecks wit
           (tuple) => {
             val delivery = scalaPizzeria.deliverPizzaWithForConstruct(tuple._1, tuple._2, tuple._3)
             //note the functional assertion style
-            assert(delivery.map(_._2.topping).toArray.contains (ANCHOVIES)==false, "We don't want fish on our pizza!")
-            //delivery.map(_._2.topping).toArray.contains (ANCHOVIES)==false
+            val deliveryArray = delivery.map(_._2.topping).toArray
+            assert(deliveryArray.contains (ANCHOVIES)==false, "We don't want fish on our pizza!")
           }
         }        
 

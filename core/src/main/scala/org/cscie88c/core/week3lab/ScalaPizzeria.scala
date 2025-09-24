@@ -19,7 +19,7 @@ class ScalaPizzeria {
 
     def makeCheesePizzaBases(sizes: Seq[String]) = {
         //for each of the sizes of pizza , make a cheese pizza of that size
-        sizes.map(s => PizzaType(CHEESE, s ))
+        sizes.map(s => PizzaType( s, CHEESE ))
     }
 
     def deliverPizzaWithFlatMap(numOrders: Int, sizes: List[String], toppings: List[String]): List[(Int,PizzaType)] = {
@@ -33,6 +33,7 @@ class ScalaPizzeria {
         val deliveries = orders.flatMap(o => {
             pizza_base.flatMap(p => {
                 toppings.map( t=> {
+                    //this is a tuple that is returned
                     (o,p.copy(topping = t))
                 })
             })
@@ -48,10 +49,12 @@ class ScalaPizzeria {
         val pizza_base = makeCheesePizzaBases(sizes)
 
         //use braces here, not parentheses
+        //a for construct, NOT a for loop like in other languages
         val deliveries = for {
             o <- orders
             p <- pizza_base
             t <- toppings
+            //if t != ANCHOVIES
         } yield (o, p.copy(topping = t))
 
         deliveries
