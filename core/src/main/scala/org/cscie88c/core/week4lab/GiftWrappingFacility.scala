@@ -1,4 +1,4 @@
-package org.cscie88c.week4lab
+package org.cscie88c.core.week4lab
 
 /**
   * This gift wrapping facility takes gifts and "wraps" them using a function

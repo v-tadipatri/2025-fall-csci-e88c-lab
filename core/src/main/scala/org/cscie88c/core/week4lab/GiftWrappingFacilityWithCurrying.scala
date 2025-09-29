@@ -1,4 +1,4 @@
-package org.cscie88c.week4lab
+package org.cscie88c.core.week4lab
 
 class GiftWrappingFacilityWithCurrying {
   

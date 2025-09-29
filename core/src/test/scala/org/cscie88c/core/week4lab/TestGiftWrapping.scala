@@ -1,6 +1,6 @@
-package org.cscie88c.week4lab
+package org.cscie88c.core.week4lab
 
-import org.cscie88c.testutils.{StandardTest}
+import org.cscie88c.core.testutils.{StandardTest}
 
 class TestGiftWrapping extends StandardTest {
     val wrappingFacility = new GiftWrappingFacility
