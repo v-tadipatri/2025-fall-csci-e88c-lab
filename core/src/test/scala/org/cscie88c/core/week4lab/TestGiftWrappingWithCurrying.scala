@@ -43,6 +43,14 @@ class TestGiftWrappingWithCurrying extends StandardTest {
 
             }
 
+            "handle like in the olden days, different presents with parentheses and a bow before it" in {
+
+                //NOT the curried function, so that means that we have to call it
+                val bowResultNum = wrappingFacility.wrapGiftsOldeStyle("=BOW=", presentsNum, parenthesesWrap)
+                val bowResultLetters = wrappingFacility.wrapGiftsOldeStyle("=BOW=", presentsAlpha, parenthesesWrap)
+
+                //val bowResultFail = wrappingFacility.wrapGiftsOldeStyle("=BOW=") _
+            }
 
         }
 
