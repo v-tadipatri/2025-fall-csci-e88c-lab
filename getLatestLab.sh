@@ -30,6 +30,7 @@ then
 	git push -u origin demo-lab${week}
 	git checkout -b prep-demo${week}
 	git add $prefix
+	git status | grep new.file | awk '{print $2}' | xargs sed -i 's/cscie88c.week/cscie88c.core.week/'
     git status
 	echo "Create a branch: "
 	echo "https://github.com/v-tadipatri/2025-fall-csci-e88c-lab/compare/demo-lab${week}...prep-demo${week}"
