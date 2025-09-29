@@ -16,16 +16,24 @@ class TestLazyWrapping extends StandardTest {
                     "0" + g
                 })
                 println("Immediate: Now we will see what's in the presents")
-                presentsNum.foreach(println)
+                //presentsNum.foreach(println)
 
             }
             "be lazy in checking presents" in {
                 lazy val lazyPresentsNum: Seq[String] = (1 to 5).toList.map(g => {
                     println("Wait to open present...")
+                    //maybe open a DB connection here?
+                    //or call some API with a long response time?
                     "*0" + g
                 })
                 println("Lazy: Now we will see what's in the presents")
                 lazyPresentsNum.foreach(println)
+
+                //we can make infinite Gifts!!
+                val infiniteGifts = LazyList.from(1).map(s => "gift-"+s)
+                //but you have to make it in a "real" list by calling toList
+                println(infiniteGifts.take(2).toList)
+                println(infiniteGifts.take(200).toList)
             }
 
         }
