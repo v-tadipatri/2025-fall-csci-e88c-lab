@@ -26,8 +26,13 @@ then
 		cp -v $i ../$dest 
 	done
     cd ..
+	git checkout -b demo-lab${week}
+	git push -u origin demo-lab${week}
+	git checkout -b prep-demo${week}
 	git add $prefix
     git status
+	echo "Create a branch: "
+	echo "https://github.com/v-tadipatri/2025-fall-csci-e88c-lab/compare/demo-lab${week}...prep-demo${week}"
 else
     echo "Could not clone main repo"
 fi
