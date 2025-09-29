@@ -10,12 +10,12 @@ class TestLazyWrapping extends StandardTest {
     "Wrapping facility " when {
         "asked to mutate lists" should {
 
-            "be active in checking presents" in {
+            "be eager in checking presents" in {
                 val presentsNum: Seq[String] = (1 to 5).toList.map(g => {
                     println("Opening present now...")
                     "0" + g
                 })
-                println("Immediate: Now we will see what's in the presents")
+                println("Eager: Now we will see what's in the presents")
                 //presentsNum.foreach(println)
 
             }
@@ -33,7 +33,7 @@ class TestLazyWrapping extends StandardTest {
                 val infiniteGifts = LazyList.from(1).map(s => "gift-"+s)
                 //but you have to make it in a "real" list by calling toList
                 println(infiniteGifts.take(2).toList)
-                println(infiniteGifts.take(200).toList)
+                //println(infiniteGifts.take(200).toList)
             }
 
         }
