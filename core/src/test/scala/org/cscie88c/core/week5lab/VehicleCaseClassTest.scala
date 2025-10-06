@@ -4,7 +4,7 @@ import org.cscie88c.core.testutils.{StandardTest}
 
 
 // write unit tests for VehicleTest below
-class VehicleTest extends StandardTest {
+class VehicleCaseClassTest extends StandardTest {
 
     "Vehicle" when {
     "instantiated" should {
