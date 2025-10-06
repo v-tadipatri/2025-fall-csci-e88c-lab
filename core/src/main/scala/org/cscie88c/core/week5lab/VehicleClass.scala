@@ -1,12 +1,5 @@
 package org.cscie88c.core.week5lab
 
-/**
-  * Simple case class
-  *
-  * @param make
-  * @param model
-  */
-case class VehicleCase (make: String, model: String)
 
 /**
   * Real class with a companion object
@@ -14,7 +7,7 @@ case class VehicleCase (make: String, model: String)
   * @param make
   * @param model
   */
-class VehicleClass (val make: String, val model: String){
+class VehicleClass (val make: String, val model: String) {
 
   // Here are some methods  
 
@@ -38,10 +31,10 @@ class VehicleClass (val make: String, val model: String){
     def driveForMilesMethod = toMilesMethod _ andThen driveMethod _
 
 }
-object VehicleClass{
+object VehicleClass {
   def apply(makemodel: String) = {
     val arr = makemodel.split(" ")
-    new VehicleClass(arr(0), arr(1) /*+ " XL" */)
+    new VehicleClass(arr(0), arr(1) )
   }
   def unapply(vehicle: VehicleClass ): Option[(String, String)] = Some(vehicle.make, vehicle.model)
 
