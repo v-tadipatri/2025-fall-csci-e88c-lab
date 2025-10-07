@@ -8,12 +8,12 @@ class VehicleRealClassTest extends StandardTest {
     val toyotacar =  new VehicleClass("toyota", "corolla")
     val hondacar =  new VehicleClass("honda", "accord")
     //these are defined a different way...
+    //what method is actually called?
     val fordcar =  VehicleClass("ford mustang")
     val fordcar2 =  VehicleClass("ford bronco")
 
     val my_cars = Seq(new VehicleClass("toyota", "camry"), toyotacar, hondacar, fordcar, fordcar2)
 
-     //just for demo purposes - normally, we would not put this in a test class
     def findToyotaCars(): Seq[VehicleClass] = {
 
 
@@ -39,7 +39,11 @@ class VehicleRealClassTest extends StandardTest {
         val found_toyota = findToyotaCars()
         found_toyota.foreach( c => {
           //driving 100 km
-          //c.driveForMilesFunc(100)
+          //which function is called first?
+          c.driveForMilesFunc(100)
+          //what happens if the underscores are missing ?
+          c.driveForMilesMethod(100)
+          println("Finished driving")
 
         })
       }

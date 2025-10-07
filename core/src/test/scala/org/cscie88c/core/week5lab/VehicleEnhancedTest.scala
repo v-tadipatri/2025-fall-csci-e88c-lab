@@ -4,6 +4,7 @@ import org.cscie88c.core.testutils.{StandardTest}
 
 // write unit tests for VehicleTest below
 class VehicleEnhancedTest extends StandardTest {
+    //Japanese brands defined here
     val japaneseBrands = Seq("toyota", "honda", "nissan")
 
     val isJapaneseWithoutCase: PartialFunction[VehicleClass, String] =
@@ -20,13 +21,23 @@ class VehicleEnhancedTest extends StandardTest {
 
       "work with regular car classes" in {
         val lastTest = new VehicleRealClassTest()
-        val found_toyota = lastTest.findToyotaCars()
+        //val found_toyota = lastTest.findToyotaCars()
+        //let's use the cars from the last test
         val all_cars = lastTest.my_cars
+        //this only uses the defined values, and calls the apply method
         val modelsFound = all_cars.collect(isJapaneseWithoutCase)
         println("==== These are the Japanese car brands we found ===")
         modelsFound.foreach(println)
-        //try setting isDefined = true
+        println("====")
+        //try setting partial function's isDefined = true
         //can we use a more compact method?
+
+
+
+
+
+
+
 
         println(ObjectComplimenter.praise(all_cars.map(c => c.make+"_"+c.model)))
         println("======")
@@ -42,14 +53,7 @@ class VehicleEnhancedTest extends StandardTest {
         println(ObjectComplimenter.praise(Seq()))
         println("======")
 
-        /*
-        found_toyota.foreach( c => {
-          //driving 100 km
-          c.driveForMilesFunc(100)
-          //c.driveForMilesMethod(100)
 
-        })
-         */
       }
 
     }
