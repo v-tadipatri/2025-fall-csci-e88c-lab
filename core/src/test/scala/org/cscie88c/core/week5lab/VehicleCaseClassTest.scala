@@ -3,7 +3,10 @@ package org.cscie88c.core.week5lab
 import org.cscie88c.core.testutils.{StandardTest}
 
 
-// write unit tests for VehicleTest below
+/**
+ * Example of using case classes
+ * These have many functions already built in - like toString, apply/unapply
+ */
 class VehicleCaseClassTest extends StandardTest {
 
     "Vehicle" when {
@@ -21,7 +24,7 @@ class VehicleCaseClassTest extends StandardTest {
               case VehicleCase(make, model) if (make =="toyota" && model == "camry") => {
                 Result(true, "this is also a camry " )
               }
-              case VehicleCase(make, _) if (make =="toyota") => Result(true,s"is some other kind of toyota")
+              case VehicleCase(make, _) if (make =="toyota") => Result(true,"is some other kind of toyota")
               case VehicleCase(_,_) => Result(false, s"is not a toyota")
               case _ => Result(false, "not even a car")
           }

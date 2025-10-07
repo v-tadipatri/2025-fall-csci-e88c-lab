@@ -2,7 +2,12 @@ package org.cscie88c.core.week5lab
 
 import org.cscie88c.core.testutils.{StandardTest}
 
-// write unit tests for VehicleTest below
+/**
+ * Let's move to some more enhanced ways of working with the Vehicle
+ *   - Partial functions
+ *   - Partial functions with case classes
+ *   - Parametric Polymorphism
+ */
 class VehicleEnhancedTest extends StandardTest {
     //Japanese brands defined here
     val japaneseBrands = Seq("toyota", "honda", "nissan")
@@ -21,7 +26,6 @@ class VehicleEnhancedTest extends StandardTest {
 
       "work with regular car classes" in {
         val lastTest = new VehicleRealClassTest()
-        //val found_toyota = lastTest.findToyotaCars()
         //let's use the cars from the last test
         val all_cars = lastTest.my_cars
         //this only uses the defined values, and calls the apply method
@@ -39,12 +43,21 @@ class VehicleEnhancedTest extends StandardTest {
 
 
 
-        println(ObjectComplimenter.praise(all_cars.map(c => c.make+"_"+c.model)))
+
+      }
+
+      "compliment the objects" in {
+
+        //using parametric polymorphism
+
+        val lastTest = new VehicleRealClassTest()
+        val all_cars = lastTest.my_cars
+        println(ObjectComplimenter.praise(all_cars.map(c => VehicleCase(c.make, c.model))))
         println("======")
         println(ObjectComplimenter.praise(Seq("my_neighbor", "my_neighbors_dog", "stray_cat", "little_kitten")))
         println("======")
-        println(ObjectComplimenter.praise((1 to 5)))
-        val infiniteList = LazyList.from(1).map(i => i *5)
+        println(ObjectComplimenter.praise((0 to 5)))
+        val infiniteList = LazyList.from(0).map(i => i *5)
         //should we run the next line?
         //println(ObjectComplimenter.praise(infiniteList))
         //can we "reify" the list?
@@ -52,7 +65,6 @@ class VehicleEnhancedTest extends StandardTest {
         //what about an empty list?
         println(ObjectComplimenter.praise(Seq()))
         println("======")
-
 
       }
 

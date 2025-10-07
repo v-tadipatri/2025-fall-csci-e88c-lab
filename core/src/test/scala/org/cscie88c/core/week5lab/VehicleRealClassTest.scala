@@ -3,7 +3,9 @@ package org.cscie88c.core.week5lab
 import org.cscie88c.core.testutils.{StandardTest}
 
 
-// write unit tests for VehicleTest below
+/**
+ *  Similar to case class example, but with real classes
+ */
 class VehicleRealClassTest extends StandardTest {
     val toyotacar =  new VehicleClass("toyota", "corolla")
     val hondacar =  new VehicleClass("honda", "accord")
@@ -14,6 +16,7 @@ class VehicleRealClassTest extends StandardTest {
 
     val my_cars = Seq(new VehicleClass("toyota", "camry"), toyotacar, hondacar, fordcar, fordcar2)
 
+    //we now define a method that we can reuse
     def findToyotaCars(): Seq[VehicleClass] = {
 
 
@@ -23,7 +26,7 @@ class VehicleRealClassTest extends StandardTest {
             Result(true, "this is also a camry " )
           }
           //try commenting out apply and unapply methods
-          case VehicleClass(make, _) if (make =="toyota") => Result(true, "")
+          case VehicleClass(make, _) if (make =="toyota") => Result(true, "is some other kind of toyota")
           case _ => Result(false, "not a toyota")
         }
         println(s" === ${car} Is this a  Toyota car ? ${result}")
@@ -37,6 +40,7 @@ class VehicleRealClassTest extends StandardTest {
 
       "work with regular car classes" in {
         val found_toyota = findToyotaCars()
+        //let's take our toyota cars out for a spin!
         found_toyota.foreach( c => {
           //driving 100 km
           //which function is called first?
