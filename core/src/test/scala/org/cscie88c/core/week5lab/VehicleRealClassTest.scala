@@ -14,7 +14,7 @@ class VehicleRealClassTest extends StandardTest {
     val fordcar =  VehicleClass("ford mustang")
     val fordcar2 =  VehicleClass("ford bronco")
 
-    val my_cars = Seq(new VehicleClass("toyota", "camry"), toyotacar, hondacar, fordcar, fordcar2)
+    val my_cars = Seq(new VehicleClass("toyota", "camry"), toyotacar, hondacar, fordcar, fordcar2  /*, "random object" */)
 
     //we now define a method that we can reuse
     def findToyotaCars(): Seq[VehicleClass] = {
@@ -32,6 +32,7 @@ class VehicleRealClassTest extends StandardTest {
         println(s" === ${car} Is this a  Toyota car ? ${result}")
         result.flag
       })
+      // now put a random object in list and see what happens
       found_toyota
     }
 

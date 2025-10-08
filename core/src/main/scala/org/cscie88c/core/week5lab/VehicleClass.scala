@@ -7,12 +7,19 @@ package org.cscie88c.core.week5lab
   * @param make
   * @param model
   */
+//Fold this at the beginning
 class VehicleClass (val make: String, val model: String) {
 
   // Here are some methods  
 
     def toMilesMethod(km: Int) = (km  / 1.6).toInt
+
     def driveMethod(miles: Int) = println(s"You just drove ${miles} miles on a ${make} ${model},  and used ETA Expansion!")
+
+
+
+
+
 
   // Here are some functions  
 
@@ -31,6 +38,8 @@ class VehicleClass (val make: String, val model: String) {
     def driveForMilesMethod = toMilesMethod _ andThen driveMethod _
 
 }
+
+
 object VehicleClass {
   def apply(makemodel: String) = {
     val arr = makemodel.split(" ")
