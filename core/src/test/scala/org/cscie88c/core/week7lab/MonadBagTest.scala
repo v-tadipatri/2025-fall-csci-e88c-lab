@@ -48,19 +48,24 @@ class MonadBagTest extends StandardTest {
   // map is the guy in our story who can perform operations 
   // by unwrapping the bag and then calling respective function
   // and wraps the content back in a bag
-      val add2_sugar_bag = sugar_bag.map(sugar => add2(sugar))
+      val add2_sugar_bag = sugar_bag
+                              .map(sugar => add2(sugar))
       println(s"add2 bagged: ${add2_sugar_bag}")
 
-      val add2_sugar_bagged_again = sugar_bag.map(sugar => add2Bagger(sugar))
+      val add2_sugar_bagged_again = sugar_bag
+                                      .map(sugar => add2Bagger(sugar))
       println(s"add2 bagged again: ${add2_sugar_bagged_again}")
 
       
       //now flatten it
-      val add2_sugar_bagged_again_flattened = sugar_bag.map(sugar => add2Bagger(sugar)).flatten
+      val add2_sugar_bagged_again_flattened = sugar_bag
+                                                .map(sugar => add2Bagger(sugar))
+                                                .flatten
       println(s"add2 bagged again, then flattened: ${add2_sugar_bagged_again_flattened}")
 
       //this is easier
-      val add2_sugar_bagged_again_flatmap = sugar_bag.flatMap(sugar => add2Bagger(sugar))
+      val add2_sugar_bagged_again_flatmap = sugar_bag
+                                                .flatMap(sugar => add2Bagger(sugar))
       println(s"add2 bagged again, then flatmap: ${add2_sugar_bagged_again_flatmap}")
 
     }

@@ -51,6 +51,7 @@ class FunctorBagTest extends StandardTest {
 
       val half_flour_bagged_again = flour_bag.map(flour => halfBagger(flour))
       println(s"Half bagged again: ${half_flour_bagged_again}")
+      //because this is just a functor, we can't do anything about the "double bag"
 
         
     }

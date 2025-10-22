@@ -9,6 +9,7 @@ import scala.concurrent.Future
  */
 class AddSpec extends AsyncFlatSpec {
 
+  //This returns a future
   def addSoon(addends: Int*): Future[Int] = Future { Thread.sleep(5000); addends.sum }
 
   behavior of "addSoon"
@@ -17,13 +18,14 @@ class AddSpec extends AsyncFlatSpec {
     val futureSum: Future[Int] = addSoon(1, 2)
     // You can map assertions onto a Future, then return
     // the resulting Future[Assertion] to ScalaTest:
-    futureSum map { sum => {
+    futureSum.map { sum => {
         println(s"got eventual sum: ${sum}")
         assert(sum == 3)
       }
     }
   }
 
+  //this blocks and returns
   def addNow(addends: Int*): Int = {
     Thread.sleep(5000)
     addends.sum
