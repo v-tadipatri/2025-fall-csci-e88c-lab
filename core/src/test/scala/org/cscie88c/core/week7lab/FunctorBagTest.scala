@@ -24,10 +24,10 @@ case class Flour(weight: Double)
  */
 object FunctionSet {
   // the guy who is expert at making flour half
-  def half = (flour: Flour) => Flour(flour.weight / 2)
+  def half = (someflour: Flour) => Flour(someflour.weight / 2)
 
   //the guy who halfs the flour, then puts it in another bag
-  def halfBagger = (flour: Flour) => FunctorBag(Flour(flour.weight / 2))
+  def halfBagger = (someflour: Flour) => FunctorBag(Flour(someflour.weight / 2))
 
 }
 

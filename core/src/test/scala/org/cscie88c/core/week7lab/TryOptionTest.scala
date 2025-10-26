@@ -32,6 +32,7 @@ class TryOptionTest   extends StandardTest {
 
     "parse empty values nicely" in {
       val emptyInt = Option.empty[Int]
+      //we can see map working on empty/'none' options
       val outputEmpty = emptyInt.map(multiplier(_))
       println(s"Got empty output nicely: ${outputEmpty}")
     }

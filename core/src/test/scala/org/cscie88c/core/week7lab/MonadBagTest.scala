@@ -69,9 +69,6 @@ class MonadBagTest extends StandardTest {
       println(s"add2 bagged again, then flatmap: ${add2_sugar_bagged_again_flatmap}")
 
     }
-    "run more tests" in {
-
-    }
   }
 
 }
