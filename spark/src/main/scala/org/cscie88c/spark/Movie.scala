@@ -4,7 +4,7 @@ case class Movie(
         genre: String,
         category: String,
         title: String,
-        year: Int,
+        year: String,
         distribution: String,
         description: String,
         url: String,
@@ -15,3 +15,9 @@ case class Movie(
   def isYetAnotherAvengersMovie = title.toLowerCase().contains("avengers")
 
 }
+
+case class MovieSnippet(
+                       title: String,
+                       year: Int,
+                       description: String
+                )
