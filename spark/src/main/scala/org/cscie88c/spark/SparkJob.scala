@@ -32,7 +32,7 @@ object SparkJob {
     //if local, get from path
     //otherwise, copy to movies subdirectory in data folder (mounted in docker)
     val fullpath = Try(this.getClass.getResource(s"/movies/${path}").toURI.toString)
-      .getOrElse(s"/opt/spark/spsark-data/movies/${path}")
+      .getOrElse(s"/opt/spark-data/movies/${path}")
 
     println(s"=== loading ${path} from : ${fullpath}")
     fullpath
