@@ -1,5 +1,8 @@
 package org.cscie88c.beam
 
+import com.amazonaws.ClientConfiguration
+import com.amazonaws.auth.{AWSCredentialsProvider, InstanceProfileCredentialsProvider}
+import com.amazonaws.regions.Regions
 import com.amazonaws.services.kinesis.{AmazonKinesis, AmazonKinesisClientBuilder}
 import org.apache.beam.sdk.Pipeline
 import org.apache.beam.sdk.io.TextIO
@@ -37,16 +40,38 @@ object BeamKinesisToS3 extends App {
    */
 
 
+  val kinesisClient: AmazonKinesis =
+    AmazonKinesisClientBuilder.standard()
+      .withRegion(Regions.US_EAST_1)
+      .build()
+
+  val creds: AWSCredentialsProvider = new InstanceProfileCredentialsProvider(false) // EMR instance role
+  val config = new ClientConfiguration()
+
+
+  val kinesisData =
+    p.apply(
+      "ReadFromKinesis",
+      KinesisIO.read()
+        .withStreamName("my-stream")
+        .withInitialPositionInStream(InitialPositionInStream.TRIM_HORIZON)
+        .withAWSClientsProvider(creds, Regions.US_EAST_1)
+    )
+
+
   //need to force types for compilation
-  val kinesisData = p.apply(
+  val kinesisDataCast = p.apply(
     "ReadFromKinesis",
-    KinesisIO.read().asInstanceOf[org.apache.beam.sdk.transforms.PTransform[
+    KinesisIO.read()
+      .withStreamName("my-stream")
+      .asInstanceOf[org.apache.beam.sdk.transforms.PTransform[
       org.apache.beam.sdk.values.PBegin,
       org.apache.beam.sdk.values.PCollection[Array[Byte]]
     ]]
   )
+
   // Convert ByteArray -> String (assuming UTF-8)
-  val lines = kinesisData.apply("DecodeBytes", MapElements.via(new SimpleFunction[Array[Byte], String] {
+  val lines = kinesisDataCast.apply("DecodeBytes", MapElements.via(new SimpleFunction[Array[Byte], String] {
     override def apply(input: Array[Byte]): String = new String(input, "UTF-8")
   }))
 
