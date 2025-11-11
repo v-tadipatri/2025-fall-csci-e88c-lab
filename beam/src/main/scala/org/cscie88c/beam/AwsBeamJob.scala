@@ -49,6 +49,7 @@ object BeamKinesisToS3 extends App {
   val config = new ClientConfiguration()
 
 
+  /*
   val kinesisData =
     p.apply(
       "ReadFromKinesis",
@@ -57,6 +58,7 @@ object BeamKinesisToS3 extends App {
         .withInitialPositionInStream(InitialPositionInStream.TRIM_HORIZON)
         .withAWSClientsProvider(creds, Regions.US_EAST_1)
     )
+   */
 
 
   //need to force types for compilation
@@ -64,11 +66,14 @@ object BeamKinesisToS3 extends App {
     "ReadFromKinesis",
     KinesisIO.read()
       .withStreamName("my-stream")
+      .withInitialPositionInStream(InitialPositionInStream.TRIM_HORIZON)
+      .withAWSClientsProvider(creds, Regions.US_EAST_1)
       .asInstanceOf[org.apache.beam.sdk.transforms.PTransform[
       org.apache.beam.sdk.values.PBegin,
       org.apache.beam.sdk.values.PCollection[Array[Byte]]
     ]]
   )
+
 
   // Convert ByteArray -> String (assuming UTF-8)
   val lines = kinesisDataCast.apply("DecodeBytes", MapElements.via(new SimpleFunction[Array[Byte], String] {
