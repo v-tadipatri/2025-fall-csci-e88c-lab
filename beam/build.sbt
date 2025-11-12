@@ -1,19 +1,26 @@
 name := "beam"
 
 val scioVersion = "0.14.1"
-val beamVersion = "2.48.0"
+val beamVersion = "2.49.0"
+//ThisBuild / scalaVersion := "2.12.17"
+//scalaVersion := "2.12.17"
 
 resolvers += "Confluent" at "https://packages.confluent.io/maven/"
+resolvers += Resolver.mavenCentral
 
 
 libraryDependencies ++= Seq(
+  //"org.apache.beam" % "beam-runners-flink" % beamVersion,
   "com.spotify" %% "scio-core" % scioVersion,
   "com.spotify" %% "scio-test" % scioVersion % Test,
   "org.apache.beam" % "beam-runners-direct-java" % beamVersion % "provided",
   "org.apache.beam" % "beam-runners-google-cloud-dataflow-java" % beamVersion % "provided",
   "com.fasterxml.jackson.core" % "jackson-databind" % "2.14.1" % "provided",
+  //"org.apache.beam" %% "beam-runners-spark" % beamVersion,
   //"org.apache.beam" % "beam-sdks-java-core" % beamVersion,
-  //"org.apache.beam" % "beam-sdks-java-io-amazon-web-services" % beamVersion,
+  "org.apache.beam" % "beam-runners-flink_2.12" % "2.16.0",
+  "org.apache.beam" % "beam-sdks-java-io-kafka" % beamVersion,
+//"org.apache.beam" % "beam-sdks-java-io-amazon-web-services" % beamVersion,
   //"org.apache.beam" % "beam-sdks-java-io-kinesis" % beamVersion,
   //"org.apache.hadoop" % "hadoop-aws" % "3.3.4"
   "org.apache.beam" % "beam-sdks-java-core" % beamVersion % "provided",

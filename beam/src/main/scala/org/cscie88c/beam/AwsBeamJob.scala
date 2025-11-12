@@ -18,11 +18,11 @@ object BeamKinesisToS3 extends App {
   val p = Pipeline.create(options)
 
   // Kinesis stream configuration
-  val streamName = "my-kinesis-stream"
-  val region = "us-east-1"
 
 
   /*
+  val streamName = "my-kinesis-stream"
+  val region = "us-east-1"
   val transform =  KinesisIO.read()
     .withStreamName("my-stream")
     .withInitialPositionInStream(InitialPositionInStream.TRIM_HORIZON)
@@ -40,16 +40,17 @@ object BeamKinesisToS3 extends App {
    */
 
 
-  val kinesisClient: AmazonKinesis =
+
+  val creds: AWSCredentialsProvider = new InstanceProfileCredentialsProvider(false) // EMR instance role
+
+
+  /*
+ val kinesisClient: AmazonKinesis =
     AmazonKinesisClientBuilder.standard()
       .withRegion(Regions.US_EAST_1)
       .build()
 
-  val creds: AWSCredentialsProvider = new InstanceProfileCredentialsProvider(false) // EMR instance role
   val config = new ClientConfiguration()
-
-
-  /*
   val kinesisData =
     p.apply(
       "ReadFromKinesis",

@@ -94,7 +94,7 @@ lazy val beam = project
     commonSettings,
     // Beam module settings
   )
-  .dependsOn(core)
+  //.dependsOn(core)
   .enablePlugins(JavaAppPackaging)
 
 lazy val root = (project in file("."))
