@@ -23,9 +23,9 @@ architecture-beta
     junction junctionCenter
     junction junctionRight
 
-    left_disk:R -- L:junctionCenter
-    top_disk:B -- T:junctionCenter
-    bottom_disk:T -- B:junctionCenter
+    left_disk:R --> L:junctionCenter
+    top_disk:B --> T:junctionCenter
+    bottom_disk:T --> B:junctionCenter
     junctionCenter:R -- L:junctionRight
     top_gateway:B -- T:junctionRight
     bottom_gateway:T -- B:junctionRight
